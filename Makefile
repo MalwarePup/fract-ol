@@ -6,7 +6,7 @@
 #    By: ladloff <ladloff@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/05/26 13:05:47 by ladloff           #+#    #+#              #
-#    Updated: 2023/05/26 20:16:11 by ladloff          ###   ########.fr        #
+#    Updated: 2023/05/27 01:51:04 by ladloff          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,7 +16,7 @@ SRC_PATH			:=	./src
 BUILD_PATH			:=	./build
 INCLUDE_PATH		:=	./include
 LIBFT_PATH			:=	./lib/libft
-LIBMLX_PATH			:=	./lib/minilibx-linux
+LIBMLX_PATH		:=	./lib/minilibx-linux
 
 SRC_PATH_FILES		:=	fractol.c \
 						mlx.c \
@@ -25,23 +25,23 @@ SRC_PATH_FILES		:=	fractol.c \
 						sets_of_fractal/mandelbrot.c \
 						sets_of_fractal/julia.c
 OBJ_FILES			:=	$(patsubst %.c,$(BUILD_PATH)/%.o,$(SRC_PATH_FILES))
-INCLUDE_PATH_FLAGS	:=	-I $(INCLUDE_PATH) -I $(LIBFT_PATH)/include \
-						-I $(LIBMLX_PATH)
+INCLUDE_PATH_FLAGS	:=	-I$(INCLUDE_PATH) -I$(LIBFT_PATH)/include
 
 ifeq ($(shell uname -s),Linux)
-	CFLAGS			:=	-Wall -Wextra -Werror -g3 $(INCLUDE_PATH_FLAGS)
+	CFLAGS			:=	-Wall -Wextra -Werror -O3 $(INCLUDE_PATH_FLAGS) \
+						-I $(LIBMLX_PATH)
 	LDFLAGS			:=	-L$(LIBFT_PATH) -L$(LIBMLX_PATH)
 	LDLIBS			:=	-lft -lmlx_Linux -lXext -lX11
+else ifeq ($(shell uname -s),Darwin)
+	LIBMLX_PATH		:=	./lib/minilibx-opengl
+	CFLAGS			:=	-Wall -Wextra -Werror -O3 $(INCLUDE_PATH_FLAGS) \
+						-I$(LIBMLX_PATH)
+	LDFLAGS			:=	-L$(LIBFT_PATH) -L$(LIBMLX_PATH)
+	LDLIBS			:=	-lft -lmlx -framework OpenGL -framework AppKit
+
 else
 	$(error Unsupported operating system)
 endif
-# else ifeq ($(shell uname -s),Darwin)
-# 	CFLAGS			:=	-Wall -Wextra -Werror -O3 $(INCLUDE_PATH_FLAGS)
-# 	LDFLAGS			:=	-L$(LIBFT_PATH) -L$(LIBMLX_PATH)/build \
-# 						-L"/opt/homebrew/Cellar/glfw/3.3.8/lib/"
-# 	LDLIBS			:=	-lft -lmlx42 -lglfw \
-# 						-framework Cocoa -framework OpenGL -framework IOKit
-
 
 all: libmlx libft $(NAME)
 

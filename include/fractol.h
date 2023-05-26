@@ -6,7 +6,7 @@
 /*   By: ladloff <ladloff@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/26 12:59:39 by ladloff           #+#    #+#             */
-/*   Updated: 2023/05/27 00:52:08 by ladloff          ###   ########.fr       */
+/*   Updated: 2023/05/27 01:47:50 by ladloff          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,9 +24,15 @@
 # define HEIGHT 800
 # define TITLE "Fractal Viewer"
 
-# define K_ESC 65307
-# define K_BRACKET_LEFT 91
-# define K_BRACKET_RIGHT 93
+# ifdef __APPLE__
+#  define K_ESC 53
+#  define K_BRACKET_LEFT 33
+#  define K_BRACKET_RIGHT 30
+# else
+#  define K_ESC 65307
+#  define K_BRACKET_LEFT 91
+#  define K_BRACKET_RIGHT 93
+# endif
 
 # define SCROLL_UP 4
 # define SCROLL_DOWN 5
