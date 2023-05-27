@@ -6,7 +6,7 @@
 /*   By: ladloff <ladloff@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/26 12:59:39 by ladloff           #+#    #+#             */
-/*   Updated: 2023/05/27 01:47:50 by ladloff          ###   ########.fr       */
+/*   Updated: 2023/05/27 12:34:23 by ladloff          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,14 +24,28 @@
 # define HEIGHT 800
 # define TITLE "Fractal Viewer"
 
+# define STR_OS "You are currently running this program on this platform: %s\n"
+# define ESTR_OS "You cannot run this program on this plateform: %s\n"
+
 # ifdef __APPLE__
+#  define OS_NAME "macOS"
+#  define CODE_OS_NAME 1
 #  define K_ESC 53
 #  define K_BRACKET_LEFT 33
 #  define K_BRACKET_RIGHT 30
-# else
+#  define MLX_END_LOOP NULL
+#  define MLX_DESTROY_DISPLAY NULL
+# elif defined __linux__
+#  define OS_NAME "Linux"
+#  define CODE_OS_NAME 2
 #  define K_ESC 65307
 #  define K_BRACKET_LEFT 91
 #  define K_BRACKET_RIGHT 93
+#  define MLX_END_LOOP mlx_loop_end(mlx->mlx)
+#  define MLX_DESTROY_DISPLAY mlx_destroy_display(mlx->mlx)
+# else
+#  define OS_NAME "Unknown"
+#  define CODE_OS_NAME 3
 # endif
 
 # define SCROLL_UP 4
