@@ -6,7 +6,7 @@
 /*   By: ladloff <ladloff@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/26 13:05:12 by ladloff           #+#    #+#             */
-/*   Updated: 2023/05/27 11:50:39 by ladloff          ###   ########.fr       */
+/*   Updated: 2023/05/27 12:29:54 by ladloff          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,8 +51,8 @@ void	destroy_mlx(t_mlx *mlx)
 		mlx_destroy_window(mlx->mlx, mlx->win);
 	if (mlx->mlx)
 	{
-		// mlx_loop_end(mlx->mlx);
-		// mlx_destroy_display(mlx->mlx);
+		MLX_END_LOOP;
+		MLX_DESTROY_DISPLAY;
 		free(mlx->mlx);
 	}
 	free(mlx->data);
