@@ -6,7 +6,7 @@
 /*   By: ladloff <ladloff@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/26 12:59:37 by ladloff           #+#    #+#             */
-/*   Updated: 2023/05/27 00:51:11 by ladloff          ###   ########.fr       */
+/*   Updated: 2023/05/27 12:36:16 by ladloff          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -114,6 +114,13 @@ int	main(int argc, char *argv[])
 		ft_printf(HSTR_0 HSTR_1 HSTR_2);
 		return (EXIT_SUCCESS);
 	}
+	if (CODE_OS_NAME == 3)
+	{
+		ft_printf(ESTR_OS, OS_NAME);
+		exit(EXIT_FAILURE);
+	}
+	else
+		ft_printf(STR_OS, OS_NAME);
 	process_fractol(argc, argv);
 	return (EXIT_SUCCESS);
 }
