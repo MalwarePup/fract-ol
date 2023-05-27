@@ -6,7 +6,7 @@
 /*   By: ladloff <ladloff@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/26 13:43:20 by ladloff           #+#    #+#             */
-/*   Updated: 2023/05/27 20:51:16 by ladloff          ###   ########.fr       */
+/*   Updated: 2023/05/27 21:11:04 by ladloff          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,46 @@ void	zoom(t_mlx *mlx, int button, t_complex mouse)
 		+ (mlx->data.x_max - mouse.real) * zoom_factor;
 	mlx->data.y_max = mouse.imaginary
 		+ (mlx->data.y_max - mouse.imaginary) * zoom_factor;
+	render_fractal(mlx);
+}
+
+void	move_left(t_mlx *mlx)
+{
+	double offset;
+
+	offset = (mlx->data.x_max - mlx->data.x_min) * 0.05;
+	mlx->data.x_min -= offset;
+	mlx->data.x_max -= offset;
+	render_fractal(mlx);
+}
+
+void	move_right(t_mlx *mlx)
+{
+	double	offset;
+
+	offset = (mlx->data.x_max - mlx->data.x_min) * 0.05;
+	mlx->data.x_min += offset;
+	mlx->data.x_max += offset;
+	render_fractal(mlx);
+}
+
+void	move_up(t_mlx *mlx)
+{
+	double	offset;
+
+	offset = (mlx->data.y_max - mlx->data.y_min) * 0.05;
+	mlx->data.y_min -= offset;
+	mlx->data.y_max -= offset;
+	render_fractal(mlx);
+}
+
+void	move_down(t_mlx *mlx)
+{
+	double	offset;
+
+	offset = (mlx->data.y_max - mlx->data.y_min) * 0.05;
+	mlx->data.y_min += offset;
+	mlx->data.y_max += offset;
 	render_fractal(mlx);
 }
 
@@ -70,6 +110,14 @@ int	hook_keypress(int keycode, t_mlx *mlx)
 		zoom(mlx, SCROLL_DOWN, mlx->data.c);
 		render_fractal(mlx);
 	}
+	else if (keycode == XK_w || keycode == XK_W || keycode == XK_Up)
+		move_up(mlx);
+	else if (keycode == XK_a || keycode == XK_A || keycode == XK_Left)
+		move_left(mlx);
+	else if (keycode == XK_s || keycode == XK_S || keycode == XK_Down)
+		move_down(mlx);
+	else if (keycode == XK_d || keycode == XK_D || keycode == XK_Right)
+		move_right(mlx);
 	return (EXIT_SUCCESS);
 }
 
