@@ -6,7 +6,7 @@
 #    By: ladloff <ladloff@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/05/26 13:05:47 by ladloff           #+#    #+#              #
-#    Updated: 2023/05/27 01:51:04 by ladloff          ###   ########.fr        #
+#    Updated: 2023/05/27 15:33:31 by ladloff          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -19,6 +19,7 @@ LIBFT_PATH			:=	./lib/libft
 LIBMLX_PATH		:=	./lib/minilibx-linux
 
 SRC_PATH_FILES		:=	fractol.c \
+						fractol_utils.c \
 						mlx.c \
 						hook.c \
 						render.c \
