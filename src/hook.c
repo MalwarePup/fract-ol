@@ -6,7 +6,7 @@
 /*   By: ladloff <ladloff@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/26 13:43:20 by ladloff           #+#    #+#             */
-/*   Updated: 2023/05/27 16:49:20 by ladloff          ###   ########.fr       */
+/*   Updated: 2023/05/27 20:51:16 by ladloff          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,29 +16,6 @@ int	close_window_event(t_mlx *mlx)
 {
 	destroy_mlx(mlx);
 	exit(EXIT_SUCCESS);
-}
-
-int	hook_keypress(int keycode, t_mlx *mlx)
-{
-	if (keycode == K_ESC)
-	{
-		destroy_mlx(mlx);
-		exit(EXIT_SUCCESS);
-	}
-	else if (keycode == K_BRACKET_RIGHT)
-	{
-		mlx->data.max_iter++;
-		render_fractal(mlx);
-	}
-	else if (keycode == K_BRACKET_LEFT)
-	{
-		if (mlx->data.max_iter > 1)
-		{
-			mlx->data.max_iter--;
-			render_fractal(mlx);
-		}
-	}
-	return (EXIT_SUCCESS);
 }
 
 void	zoom(t_mlx *mlx, int button, t_complex mouse)
@@ -60,6 +37,43 @@ void	zoom(t_mlx *mlx, int button, t_complex mouse)
 		+ (mlx->data.y_max - mouse.imaginary) * zoom_factor;
 	render_fractal(mlx);
 }
+
+#ifdef __linux__
+
+int	hook_keypress(int keycode, t_mlx *mlx)
+{
+	if (keycode == XK_Escape)
+	{
+		destroy_mlx(mlx);
+		exit(EXIT_SUCCESS);
+	}
+	else if (keycode == XK_bracketright)
+	{
+		mlx->data.max_iter++;
+		render_fractal(mlx);
+	}
+	else if (keycode == XK_bracketleft)
+	{
+		if (mlx->data.max_iter > 1)
+		{
+			mlx->data.max_iter--;
+			render_fractal(mlx);
+		}
+	}
+	else if (keycode == XK_q || keycode == XK_Q)
+	{
+		zoom(mlx, SCROLL_UP, mlx->data.c);
+		render_fractal(mlx);
+	}
+	else if (keycode == XK_e || keycode == XK_e)
+	{
+		zoom(mlx, SCROLL_DOWN, mlx->data.c);
+		render_fractal(mlx);
+	}
+	return (EXIT_SUCCESS);
+}
+
+#endif
 
 int	hook_mouse_scroll(int button, int x, int y, t_mlx *mlx)
 {

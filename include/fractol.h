@@ -6,7 +6,7 @@
 /*   By: ladloff <ladloff@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/26 12:59:39 by ladloff           #+#    #+#             */
-/*   Updated: 2023/05/27 15:32:47 by ladloff          ###   ########.fr       */
+/*   Updated: 2023/05/27 20:38:50 by ladloff          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,11 +36,9 @@
 #  define MLX_END_LOOP(mlx) NULL
 #  define MLX_DESTROY_DISPLAY(mlx) NULL
 # elif defined __linux__
+#  include <X11/keysym.h>
 #  define OS_NAME "Linux"
 #  define CODE_OS_NAME 2
-#  define K_ESC 65307
-#  define K_BRACKET_LEFT 91
-#  define K_BRACKET_RIGHT 93
 #  define MLX_END_LOOP(mlx) mlx_loop_end(mlx->mlx)
 #  define MLX_DESTROY_DISPLAY(mlx) mlx_destroy_display(mlx->mlx)
 # else
