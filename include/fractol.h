@@ -6,7 +6,7 @@
 /*   By: ladloff <ladloff@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/26 12:59:39 by ladloff           #+#    #+#             */
-/*   Updated: 2023/05/27 15:08:09 by ladloff          ###   ########.fr       */
+/*   Updated: 2023/05/27 15:32:47 by ladloff          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,8 +33,8 @@
 #  define K_ESC 53
 #  define K_BRACKET_LEFT 33
 #  define K_BRACKET_RIGHT 30
-#  define MLX_END_LOOP NULL
-#  define MLX_DESTROY_DISPLAY NULL
+#  define MLX_END_LOOP(mlx) NULL
+#  define MLX_DESTROY_DISPLAY(mlx) NULL
 # elif defined __linux__
 #  define OS_NAME "Linux"
 #  define CODE_OS_NAME 2
