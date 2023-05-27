@@ -6,7 +6,7 @@
 /*   By: ladloff <ladloff@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/26 18:12:01 by ladloff           #+#    #+#             */
-/*   Updated: 2023/05/26 23:28:43 by ladloff          ###   ########.fr       */
+/*   Updated: 2023/05/27 14:45:29 by ladloff          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,9 +30,9 @@ uint32_t	get_color(int iter, int max_iter)
 void	map_pixel_to_complex(t_complex *c, int32_t x, int32_t y, t_mlx *mlx)
 {
 	c->real = (double)x / (double)WIDTH
-		* (mlx->data->x_max - mlx->data->x_min) + mlx->data->x_min;
+		* (mlx->data.x_max - mlx->data.x_min) + mlx->data.x_min;
 	c->imaginary = (double)y / (double)HEIGHT
-		* (mlx->data->y_max - mlx->data->y_min) + mlx->data->y_min;
+		* (mlx->data.y_max - mlx->data.y_min) + mlx->data.y_min;
 }
 
 static void	put_pixel(t_mlx *mlx, int32_t x, int32_t y, uint32_t color)
@@ -46,11 +46,11 @@ static void	put_pixel(t_mlx *mlx, int32_t x, int32_t y, uint32_t color)
 
 void	set_to_render(t_mlx *mlx)
 {
-	if (mlx->data->set == S_MANDELBROT)
-		mandelbrot(mlx->data->c, &mlx->data->iter, mlx->data->max_iter);
-	if (mlx->data->set == S_JULIA)
-		julia(&mlx->data->z, mlx->data->c, &mlx->data->iter,
-			mlx->data->max_iter);
+	if (mlx->data.set == S_MANDELBROT)
+		mandelbrot(mlx->data.c, &mlx->data.iter, mlx->data.max_iter);
+	if (mlx->data.set == S_JULIA)
+		julia(&mlx->data.z, mlx->data.c, &mlx->data.iter,
+			mlx->data.max_iter);
 }
 
 void	render_fractal(t_mlx *mlx)
@@ -65,14 +65,14 @@ void	render_fractal(t_mlx *mlx)
 		y = 0;
 		while (y < HEIGHT)
 		{
-			if (mlx->data->set == S_JULIA)
-				map_pixel_to_complex(&mlx->data->z, x, y, mlx);
+			if (mlx->data.set == S_JULIA)
+				map_pixel_to_complex(&mlx->data.z, x, y, mlx);
 			else
-				map_pixel_to_complex(&mlx->data->c, x, y, mlx);
-			mlx->data->iter = 0;
+				map_pixel_to_complex(&mlx->data.c, x, y, mlx);
+			mlx->data.iter = 0;
 			set_to_render(mlx);
-			put_pixel(mlx, x, y, get_color(mlx->data->iter,
-					mlx->data->max_iter));
+			put_pixel(mlx, x, y, get_color(mlx->data.iter,
+					mlx->data.max_iter));
 			y++;
 		}
 		x++;

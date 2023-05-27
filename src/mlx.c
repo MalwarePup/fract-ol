@@ -6,7 +6,7 @@
 /*   By: ladloff <ladloff@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/26 13:05:12 by ladloff           #+#    #+#             */
-/*   Updated: 2023/05/27 12:29:54 by ladloff          ###   ########.fr       */
+/*   Updated: 2023/05/27 15:20:33 by ladloff          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,30 +15,42 @@
 #include "libft.h"
 #include "ft_printf.h"
 
-t_mlx	*create_mlx(void)
+void	mlx_error_handler(t_fractol_errno fractol_errno, t_mlx *mlx)
 {
-	t_mlx	*new_mlx;
+	if (fractol_errno == FRACTOL_ERR_MEM_ALLOC)
+		ft_putendl_fd(ERR_STR_MEM_ALLOC, STDERR_FILENO);
+	else if (fractol_errno == FRACTOL_ERR_MLX_INIT)
+		ft_putendl_fd(ERR_STR_MLX_INIT, STDERR_FILENO);
+	else if (fractol_errno == FRACTOL_ERR_MLX_WIN)
+		ft_putendl_fd(ERR_STR_MLX_WIN, STDERR_FILENO);
+	else if (fractol_errno == FRACTOL_ERR_MLX_IMG)
+		ft_putendl_fd(ERR_STR_MLX_IMG, STDERR_FILENO);
+	else if (fractol_errno == FRACTOL_ERR_MLX_DATA_ADDR)
+		ft_putendl_fd(ERR_STR_MLX_DATA_ADDR, STDERR_FILENO);
+	destroy_mlx(mlx);
+	exit (EXIT_FAILURE);
+}
 
-	new_mlx = ft_calloc(1, sizeof(t_mlx));
-	if (!new_mlx)
-		exit(2);
-	new_mlx->mlx = mlx_init();
-	if (!new_mlx->mlx)
-		exit(3);
-	new_mlx->win = mlx_new_window(new_mlx->mlx, WIDTH, HEIGHT, TITLE);
-	if (!new_mlx->win)
-		exit(3);
-	new_mlx->img = mlx_new_image(new_mlx->mlx, WIDTH, HEIGHT);
-	if (!new_mlx->img)
-		exit(3);
-	new_mlx->addr = mlx_get_data_addr(new_mlx->img, &new_mlx->bits_per_pixel,
-			&new_mlx->size_line, &new_mlx->endian);
-	if (!new_mlx->addr)
-		exit(3);
-	new_mlx->data = ft_calloc(1, sizeof(t_data));
-	if (!new_mlx->data)
-		exit(2);
-	return (new_mlx);
+t_mlx	create_mlx(void)
+{
+	t_mlx	mlx;
+
+	ft_memset(&mlx.data, 0, sizeof(t_data));
+	ft_memset(&mlx, 0, sizeof(t_mlx));
+	mlx.mlx = mlx_init();
+	if (!mlx.mlx)
+		mlx_error_handler(FRACTOL_ERR_MLX_INIT, &mlx);
+	mlx.win = mlx_new_window(mlx.mlx, WIDTH, HEIGHT, TITLE);
+	if (!mlx.win)
+		mlx_error_handler(FRACTOL_ERR_MLX_WIN, &mlx);
+	mlx.img = mlx_new_image(mlx.mlx, WIDTH, HEIGHT);
+	if (!mlx.img)
+		mlx_error_handler(FRACTOL_ERR_MLX_IMG, &mlx);
+	mlx.addr = mlx_get_data_addr(mlx.img, &mlx.bits_per_pixel,
+			&mlx.size_line, &mlx.endian);
+	if (!mlx.addr)
+		mlx_error_handler(FRACTOL_ERR_MLX_DATA_ADDR, &mlx);
+	return (mlx);
 }
 
 void	destroy_mlx(t_mlx *mlx)
@@ -51,10 +63,8 @@ void	destroy_mlx(t_mlx *mlx)
 		mlx_destroy_window(mlx->mlx, mlx->win);
 	if (mlx->mlx)
 	{
-		MLX_END_LOOP;
-		MLX_DESTROY_DISPLAY;
+		MLX_END_LOOP(mlx);
+		MLX_DESTROY_DISPLAY(mlx);
 		free(mlx->mlx);
 	}
-	free(mlx->data);
-	free(mlx);
 }

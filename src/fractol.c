@@ -6,7 +6,7 @@
 /*   By: ladloff <ladloff@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/26 12:59:37 by ladloff           #+#    #+#             */
-/*   Updated: 2023/05/27 12:36:16 by ladloff          ###   ########.fr       */
+/*   Updated: 2023/05/27 15:05:06 by ladloff          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,27 +84,17 @@ static t_set	parser(int argc, char *argv[], t_complex *julia_params)
 
 void	process_fractol(int argc, char *argv[])
 {
-	t_mlx	*mlx;
+	t_mlx	mlx;
 
 	mlx = create_mlx();
-	mlx->data->set = parser(argc, argv, &mlx->data->c);
-	mlx->data->max_iter = 30;
-	if (!mlx->data->c.real && !mlx->data->c.imaginary
-		&& mlx->data->set == S_JULIA)
-	{
-		mlx->data->c.real = -0.8;
-		mlx->data->c.imaginary = 0.156;
-	}
-	mlx->data->x_min = X_MIN;
-	mlx->data->x_max = X_MAX;
-	mlx->data->y_min = Y_MIN;
-	mlx->data->y_max = Y_MAX;
-	render_fractal(mlx);
-	mlx_hook(mlx->win, DESTROY_NOTIFY, STRUCTURE_NOTIFY_MASK,
-		close_window_event, mlx);
-	mlx_mouse_hook(mlx->win, hook_mouse_scroll, mlx);
-	mlx_key_hook(mlx->win, hook_keypress, mlx);
-	mlx_loop(mlx->mlx);
+	mlx.data.set = parser(argc, argv, &mlx.data.c);
+	initialize_data(&mlx);
+	render_fractal(&mlx);
+	mlx_hook(mlx.win, DESTROY_NOTIFY, STRUCTURE_NOTIFY_MASK,
+		close_window_event, &mlx);
+	mlx_mouse_hook(mlx.win, hook_mouse_scroll, &mlx);
+	mlx_key_hook(mlx.win, hook_keypress, &mlx);
+	mlx_loop(mlx.mlx);
 }
 
 int	main(int argc, char *argv[])

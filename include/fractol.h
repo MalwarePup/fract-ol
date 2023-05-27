@@ -6,7 +6,7 @@
 /*   By: ladloff <ladloff@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/26 12:59:39 by ladloff           #+#    #+#             */
-/*   Updated: 2023/05/27 12:34:23 by ladloff          ###   ########.fr       */
+/*   Updated: 2023/05/27 15:08:09 by ladloff          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,8 +41,8 @@
 #  define K_ESC 65307
 #  define K_BRACKET_LEFT 91
 #  define K_BRACKET_RIGHT 93
-#  define MLX_END_LOOP mlx_loop_end(mlx->mlx)
-#  define MLX_DESTROY_DISPLAY mlx_destroy_display(mlx->mlx)
+#  define MLX_END_LOOP(mlx) mlx_loop_end(mlx->mlx)
+#  define MLX_DESTROY_DISPLAY(mlx) mlx_destroy_display(mlx->mlx)
 # else
 #  define OS_NAME "Unknown"
 #  define CODE_OS_NAME 3
@@ -63,6 +63,21 @@
 # define MANDELBROT "mandelbrot"
 # define JULIA "julia"
 
+# define ERR_STR_MEM_ALLOC "Error: Memory allocation failed"
+# define ERR_STR_MLX_INIT "Error: Failed to initialize mlx"
+# define ERR_STR_MLX_WIN "Error: Failed to create a new window"
+# define ERR_STR_MLX_IMG "Error: Failed to create new image"
+# define ERR_STR_MLX_DATA_ADDR "Error: Failed to get data address"
+
+typedef enum t_fractol_errno
+{
+	FRACTOL_ERR_MEM_ALLOC,
+	FRACTOL_ERR_MLX_INIT,
+	FRACTOL_ERR_MLX_WIN,
+	FRACTOL_ERR_MLX_IMG,
+	FRACTOL_ERR_MLX_DATA_ADDR,
+}	t_fractol_errno;
+
 typedef enum s_set
 {
 	S_MANDELBROT,
@@ -70,13 +85,6 @@ typedef enum s_set
 	S_ERROR
 }	t_set;
 
-/**
- * @struct t_complex
- * @brief Struct representing a complex number.
- *
- * @param real		The real component of the complex number.
- * @param imaginary	The imaginary component of the complex number.
- */
 typedef struct s_complex
 {
 	double	real;
@@ -96,18 +104,6 @@ typedef struct s_data
 	double		y_max;
 }	t_data;
 
-/**
- * @struct t_mlx
- * @brief Struct representing the data required for MLX graphics.
- *
- * @param mlx				The MLX context.
- * @param win				The MLX window.
- * @param img				The MLX image.
- * @param addr				The address of the image data.
- * @param bits_per_pixel	The number of bits per pixel.
- * @param size_line			The size of a line in bytes.
- * @param endian			The endian value.
- */
 typedef struct s_mlx
 {
 	void	*mlx;
@@ -117,11 +113,13 @@ typedef struct s_mlx
 	int		bits_per_pixel;
 	int		size_line;
 	int		endian;
-	t_data	*data;
+	t_data	data;
 }	t_mlx;
 
-t_mlx	*create_mlx(void);
+t_mlx	create_mlx(void);
 void	destroy_mlx(t_mlx *mlx);
+
+void	initialize_data(t_mlx *mlx);
 
 int		close_window_event(t_mlx *mlx);
 int		hook_keypress(int keycode, t_mlx *mlx);
