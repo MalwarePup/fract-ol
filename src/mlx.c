@@ -6,7 +6,7 @@
 /*   By: ladloff <ladloff@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/26 13:05:12 by ladloff           #+#    #+#             */
-/*   Updated: 2023/05/27 01:29:36 by ladloff          ###   ########.fr       */
+/*   Updated: 2023/05/27 11:50:39 by ladloff          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,8 @@ t_mlx	*create_mlx(void)
 void	destroy_mlx(t_mlx *mlx)
 {
 	if (!mlx)
-		return ; if (mlx->img)
+		return ;
+	if (mlx->img)
 		mlx_destroy_image(mlx->mlx, mlx->img);
 	if (mlx->win)
 		mlx_destroy_window(mlx->mlx, mlx->win);
