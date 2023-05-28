@@ -6,7 +6,7 @@
 #    By: ladloff <ladloff@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/05/26 13:05:47 by ladloff           #+#    #+#              #
-#    Updated: 2023/05/27 15:33:31 by ladloff          ###   ########.fr        #
+#    Updated: 2023/05/29 01:12:49 by ladloff          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,15 +16,23 @@ SRC_PATH			:=	./src
 BUILD_PATH			:=	./build
 INCLUDE_PATH		:=	./include
 LIBFT_PATH			:=	./lib/libft
-LIBMLX_PATH		:=	./lib/minilibx-linux
+LIBMLX_PATH			:=	./lib/minilibx-linux
 
 SRC_PATH_FILES		:=	fractol.c \
-						fractol_utils.c \
-						mlx.c \
-						hook.c \
-						render.c \
-						sets_of_fractal/mandelbrot.c \
-						sets_of_fractal/julia.c
+						color/color.c \
+						error/fractol_error.c \
+						hook/event.c \
+						hook/hook_manager.c \
+						hook/keypress_linux.c \
+						hook/keypress_macos.c \
+						hook/movement.c \
+						hook/scroll.c \
+						mlx/mlx_manager.c \
+						parser/parser.c \
+						render/render.c \
+						sets/julia.c \
+						sets/mandelbrot.c \
+						sets/burning_ship.c
 OBJ_FILES			:=	$(patsubst %.c,$(BUILD_PATH)/%.o,$(SRC_PATH_FILES))
 INCLUDE_PATH_FLAGS	:=	-I$(INCLUDE_PATH) -I$(LIBFT_PATH)/include
 

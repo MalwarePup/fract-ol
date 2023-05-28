@@ -1,35 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   fractol.c                                          :+:      :+:    :+:   */
+/*   hook_manager.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ladloff <ladloff@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/05/26 12:59:37 by ladloff           #+#    #+#             */
-/*   Updated: 2023/05/29 01:08:59 by ladloff          ###   ########.fr       */
+/*   Created: 2023/05/28 23:22:04 by ladloff           #+#    #+#             */
+/*   Updated: 2023/05/29 01:02:54 by ladloff          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdlib.h>
 #include "mlx.h"
-#include "fractol.h"
-#include "fractol_mlx.h"
 #include "fractol_hook.h"
-#include "fractol_parser.h"
+#include "fractol_render.h"
 
-int	main(int argc, char *argv[])
+void	hook_manager(t_mlx *mlx)
 {
-	t_mlx	mlx;
-
-	if (argc < 2)
-	{
-		print_option_menu();
-		return (EXIT_SUCCESS);
-	}
-	mlx = setup_mlx();
-	mlx.data.set = parse_arguments(argc, argv, &mlx.data.c);
-	initialize_data(&mlx.data);
-	hook_manager(&mlx);
-	mlx_loop(mlx.mlx);
-	return (EXIT_SUCCESS);
+	render_fractal(mlx);
+	mlx_hook(mlx->win, DESTROY_NOTIFY, STRUCTURE_NOTIFY_MASK,
+		close_window_event, mlx);
+	mlx_mouse_hook(mlx->win, hook_mouse_scroll, mlx);
+	mlx_key_hook(mlx->win, hook_keypress, mlx);
 }

@@ -1,28 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   fractol_utils.c                                    :+:      :+:    :+:   */
+/*   fractol_color.h                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ladloff <ladloff@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/05/27 15:04:38 by ladloff           #+#    #+#             */
-/*   Updated: 2023/05/27 15:20:48 by ladloff          ###   ########.fr       */
+/*   Created: 2023/05/29 00:23:01 by ladloff           #+#    #+#             */
+/*   Updated: 2023/05/29 01:08:13 by ladloff          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "fractol.h"
+#ifndef FRACTOL_COLOR_H
+# define FRACTOL_COLOR_H
 
-void	initialize_data(t_mlx *mlx)
-{
-	mlx->data.max_iter = 30;
-	if (!mlx->data.c.real && !mlx->data.c.imaginary
-		&& mlx->data.set == S_JULIA)
-	{
-		mlx->data.c.real = -0.8;
-		mlx->data.c.imaginary = 0.156;
-	}
-	mlx->data.x_min = X_MIN;
-	mlx->data.x_max = X_MAX;
-	mlx->data.y_min = Y_MIN;
-	mlx->data.y_max = Y_MAX;
-}
+# include <stdint.h>
+# include "fractol.h"
+
+/* color.c */
+uint32_t	get_color(int iter, int max_iter);
+
+#endif /* FRACTOL_COLOR_H */
