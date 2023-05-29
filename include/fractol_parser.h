@@ -6,7 +6,7 @@
 /*   By: ladloff <ladloff@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/28 22:20:09 by ladloff           #+#    #+#             */
-/*   Updated: 2023/05/28 23:32:01 by ladloff          ###   ########.fr       */
+/*   Updated: 2023/05/29 02:25:28 by ladloff          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@
 # define HSTR_0 "Usage: fractol [OPTIONS]\n\nOptions:\n"
 # define HSTR_1 "  m, mandelbrot\t\tDisplay the mandelbrot set\n"
 # define HSTR_2 "  j, julia\t\tDisplay the julia set\n"
-# define HSTR_3 "  b, burning ship\t Displaty the burning ship set\n"
+# define HSTR_3 "  b, burning ship\tDisplaty the burning ship set\n"
 
 # define JULIA "julia"
 # define MANDELBROT "mandelbrot"
