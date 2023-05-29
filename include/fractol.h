@@ -6,12 +6,14 @@
 /*   By: ladloff <ladloff@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/26 12:59:39 by ladloff           #+#    #+#             */
-/*   Updated: 2023/05/29 01:08:27 by ladloff          ###   ########.fr       */
+/*   Updated: 2023/05/29 02:10:31 by ladloff          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef FRACTOL_H
 # define FRACTOL_H
+
+# include <stdint.h>
 
 # define WIDTH 800
 # define HEIGHT 800
@@ -42,6 +44,8 @@ typedef struct s_data
 	double		x_max;
 	double		y_min;
 	double		y_max;
+	uint32_t	color_seed;
+	uint32_t	color_shift;
 }	t_data;
 
 typedef struct s_mlx

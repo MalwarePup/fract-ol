@@ -6,7 +6,7 @@
 /*   By: ladloff <ladloff@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/26 18:12:01 by ladloff           #+#    #+#             */
-/*   Updated: 2023/05/29 01:05:38 by ladloff          ###   ########.fr       */
+/*   Updated: 2023/05/29 02:11:01 by ladloff          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,7 @@ void	render_fractal(t_mlx *mlx)
 			mlx->data.iter = 0;
 			set_to_calculate(mlx);
 			put_pixel(mlx, x, y, get_color(mlx->data.iter,
-					mlx->data.max_iter));
+					mlx->data.color_seed));
 			y++;
 		}
 		x++;

@@ -6,7 +6,7 @@
 #    By: ladloff <ladloff@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/05/26 13:05:47 by ladloff           #+#    #+#              #
-#    Updated: 2023/05/29 01:12:49 by ladloff          ###   ########.fr        #
+#    Updated: 2023/05/29 01:22:59 by ladloff          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -40,13 +40,13 @@ ifeq ($(shell uname -s),Linux)
 	CFLAGS			:=	-Wall -Wextra -Werror -O3 $(INCLUDE_PATH_FLAGS) \
 						-I $(LIBMLX_PATH)
 	LDFLAGS			:=	-L$(LIBFT_PATH) -L$(LIBMLX_PATH)
-	LDLIBS			:=	-lft -lmlx_Linux -lXext -lX11
+	LDLIBS			:=	-lft -lmlx_Linux -lXext -lX11 -lm
 else ifeq ($(shell uname -s),Darwin)
 	LIBMLX_PATH		:=	./lib/minilibx-opengl
 	CFLAGS			:=	-Wall -Wextra -Werror -O3 $(INCLUDE_PATH_FLAGS) \
 						-I$(LIBMLX_PATH)
 	LDFLAGS			:=	-L$(LIBFT_PATH) -L$(LIBMLX_PATH)
-	LDLIBS			:=	-lft -lmlx -framework OpenGL -framework AppKit
+	LDLIBS			:=	-lft -lmlx -framework OpenGL -framework AppKit -lm
 
 else
 	$(error Unsupported operating system)

@@ -6,7 +6,7 @@
 /*   By: ladloff <ladloff@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/26 13:43:20 by ladloff           #+#    #+#             */
-/*   Updated: 2023/05/29 01:09:26 by ladloff          ###   ########.fr       */
+/*   Updated: 2023/05/29 01:57:59 by ladloff          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 #include "fractol_hook.h"
 #include "fractol_mlx.h"
 #include "fractol_render.h"
+#include "fractol_color.h"
 
 #ifdef __linux__
 
@@ -66,6 +67,12 @@ int	hook_keypress(int key, t_mlx *mlx)
 	else if (key == XK_R || key == XK_r)
 	{
 		initialize_data(&mlx->data);
+		render_fractal(mlx);
+	}
+	else if (key == XK_space)
+	{
+		mlx->data.color_shift = pseudo_rand(mlx->data.color_shift) % 256;
+		mlx->data.color_seed = mlx->data.color_shift;
 		render_fractal(mlx);
 	}
 	hook_other_options(key, mlx);
