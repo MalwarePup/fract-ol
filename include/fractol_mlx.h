@@ -6,7 +6,7 @@
 /*   By: ladloff <ladloff@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/28 22:36:12 by ladloff           #+#    #+#             */
-/*   Updated: 2023/05/28 23:28:52 by ladloff          ###   ########.fr       */
+/*   Updated: 2023/06/14 13:57:34 by ladloff          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@
 # define JULIA_IMAGINARY 0.156
 
 /* ressources_manager */
-t_mlx	setup_mlx(void);
+t_mlx	setup_mlx(int argc, char *argv[]);
 void	cleanup_mlx(t_mlx *mlx);
 void	initialize_data(t_data *data);
 

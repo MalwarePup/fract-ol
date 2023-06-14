@@ -6,20 +6,22 @@
 /*   By: ladloff <ladloff@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/26 13:05:12 by ladloff           #+#    #+#             */
-/*   Updated: 2023/05/28 22:46:21 by ladloff          ###   ########.fr       */
+/*   Updated: 2023/06/14 13:56:58 by ladloff          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "mlx.h"
 #include "fractol_mlx.h"
 #include "fractol_error.h"
+#include "fractol_parser.h"
 #include "libft.h"
 
-t_mlx	setup_mlx(void)
+t_mlx	setup_mlx(int argc, char *argv[])
 {
 	t_mlx	mlx;
 
 	ft_memset(&mlx, 0, sizeof(t_mlx));
+	mlx.data.set = parse_arguments(argc, argv, &mlx.data.c);
 	mlx.mlx = mlx_init();
 	if (!mlx.mlx)
 		mlx_error_handler(FRACTOL_ERR_MLX_INIT, &mlx);
