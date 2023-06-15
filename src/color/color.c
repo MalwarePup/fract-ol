@@ -6,27 +6,25 @@
 /*   By: ladloff <ladloff@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/29 00:22:48 by ladloff           #+#    #+#             */
-/*   Updated: 2023/05/29 02:12:12 by ladloff          ###   ########.fr       */
+/*   Updated: 2023/06/14 18:23:24 by ladloff          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <math.h>
 #include "fractol_color.h"
 
+// 0xRRGGBB
 uint32_t	get_color(int iter, uint32_t color_seed)
 {
-	uint32_t	r;
-	uint32_t	g;
-	uint32_t	b;
-	double		frequency;
+	uint8_t		r;
+	uint8_t		g;
+	uint8_t		b;
+	float		frequency;
 
 	frequency = 0.1;
-	r = (uint32_t)(sin(frequency * iter + 4 + sin(color_seed / 30.0))
-			* 127 + 128);
-	g = (uint32_t)(sin(frequency * iter + 2 + cos(color_seed / 20.0))
-			* 127 + 128);
-	b = (uint32_t)(sin(frequency * iter + 1 + tan(color_seed / 10.0))
-			* 127 + 128);
+	r = (sin(frequency * iter + 4 + sin(color_seed / 30.0)) * 127 + 128);
+	g = (sin(frequency * iter + 2 + cos(color_seed / 20.0)) * 127 + 128);
+	b = (sin(frequency * iter + 1 + tan(color_seed / 10.0)) * 127 + 128);
 	return ((r << 16) | (g << 8) | b);
 }
 
