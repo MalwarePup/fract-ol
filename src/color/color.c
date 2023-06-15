@@ -6,7 +6,7 @@
 /*   By: ladloff <ladloff@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/29 00:22:48 by ladloff           #+#    #+#             */
-/*   Updated: 2023/06/15 13:03:52 by ladloff          ###   ########.fr       */
+/*   Updated: 2023/06/15 13:52:02 by ladloff          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,14 +28,11 @@ uint32_t	get_color(int iter, uint32_t color_seed)
 	return ((r << 16) | (g << 8) | b);
 }
 
+/**
+ * A pseudo random number generator using the Linear congruential generator
+ * algorithm
+ */
 uint32_t	pseudo_rand(uint32_t seed)
 {
-	uint32_t	a;
-	uint32_t	c;
-	uint32_t	m;
-
-	a = 1103515245;
-	c = 12345;
-	m = 1 << 31;
-	return ((a * seed + c) % m);
+	return (A * seed + C);
 }
