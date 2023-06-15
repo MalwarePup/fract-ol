@@ -6,7 +6,7 @@
 #    By: ladloff <ladloff@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/05/26 13:05:47 by ladloff           #+#    #+#              #
-#    Updated: 2023/06/14 13:35:49 by ladloff          ###   ########.fr        #
+#    Updated: 2023/06/15 16:24:59 by ladloff          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -38,14 +38,14 @@ SRC_PATH_FILES		:=	main.c \
 OBJ_FILES			:=	$(patsubst %.c,$(BUILD_PATH)/%.o,$(SRC_PATH_FILES))
 
 ifeq ($(shell uname -s),Linux)
-	CFLAGS			:=	-Wall -Wextra -Werror -O3
+	CFLAGS			:=	-Wall -Wextra -Werror -MMD -MP -O3
 	CPPFLAGS		:=	-I$(INCLUDE_PATH) -I$(LIBFT_PATH)/include \
 						-I$(LIBMLX_PATH)
 	LDFLAGS			:=	-L$(LIBFT_PATH) -L$(LIBMLX_PATH)
 	LDLIBS			:=	-lft -lmlx_Linux -lXext -lX11 -lm
 else ifeq ($(shell uname -s),Darwin)
 	LIBMLX_PATH		:=	./lib/minilibx-opengl
-	CFLAGS			:=	-Wall -Wextra -Werror -O3
+	CFLAGS			:=	-Wall -Wextra -Werror -MMD -MP -O3
 	CPPFLAGS		:=	-I$(INCLUDE_PATH) -I$(LIBFT_PATH)/include \
 						-I$(LIBMLX_PATH)
 	LDFLAGS			:=	-L$(LIBFT_PATH) -L$(LIBMLX_PATH)
@@ -61,6 +61,8 @@ all: lib $(NAME)
 $(BUILD_PATH)/%.o: $(SRC_PATH)/%.c
 	@mkdir -p $(@D)
 	$(CC) $(CPPFLAGS) $(CFLAGS) -c $< -o $@
+
+-include $(OBJ_FILES:.o=.d)
 
 $(NAME): $(OBJ_FILES)
 	$(CC) $(OBJ_FILES) $(LDFLAGS) $(LDLIBS) -o $(NAME)
