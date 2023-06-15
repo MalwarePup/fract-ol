@@ -6,17 +6,17 @@
 /*   By: ladloff <ladloff@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/26 13:43:20 by ladloff           #+#    #+#             */
-/*   Updated: 2023/05/29 01:57:59 by ladloff          ###   ########.fr       */
+/*   Updated: 2023/06/15 12:42:46 by ladloff          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdlib.h>
-#include "fractol_hook.h"
-#include "fractol_mlx.h"
-#include "fractol_render.h"
-#include "fractol_color.h"
-
 #ifdef __linux__
+
+# include <stdlib.h>
+# include "fractol_hook.h"
+# include "fractol_mlx.h"
+# include "fractol_render.h"
+# include "fractol_color.h"
 
 static void	hook_movement(int key, t_mlx *mlx)
 {
