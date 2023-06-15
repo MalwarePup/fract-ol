@@ -6,7 +6,7 @@
 /*   By: ladloff <ladloff@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/26 18:12:01 by ladloff           #+#    #+#             */
-/*   Updated: 2023/06/15 16:59:15 by ladloff          ###   ########.fr       */
+/*   Updated: 2023/06/15 17:10:24 by ladloff          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ static void	put_pixel(t_mlx *mlx, int x, int y, t_rgb_color color)
 	char	*pixel_addr;
 
 	pixel_addr = mlx->addr + x * (mlx->bpp / 8) + y * mlx->size_line;
-	*(t_rgb_color *)pixel_addr = color;
+	*((t_rgb_color *)pixel_addr) = color;
 }
 
 void	map_pixel_to_complex(t_complex *c, int x, int y, t_mlx *mlx)
