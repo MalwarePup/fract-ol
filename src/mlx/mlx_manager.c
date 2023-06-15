@@ -6,7 +6,7 @@
 /*   By: ladloff <ladloff@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/26 13:05:12 by ladloff           #+#    #+#             */
-/*   Updated: 2023/06/14 13:56:58 by ladloff          ###   ########.fr       */
+/*   Updated: 2023/06/15 13:27:27 by ladloff          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,8 @@ t_mlx	setup_mlx(int argc, char *argv[])
 	return (mlx);
 }
 
+#ifdef __linux__
+
 void	cleanup_mlx(t_mlx *mlx)
 {
 	if (!mlx)
@@ -48,11 +50,31 @@ void	cleanup_mlx(t_mlx *mlx)
 		mlx_destroy_window(mlx->mlx, mlx->win);
 	if (mlx->mlx)
 	{
-		MLX_END_LOOP(mlx);
-		MLX_DESTROY_DISPLAY(mlx);
+		mlx_loop_end(mlx->mlx);
+		mlx_destroy_display(mlx->mlx);
 		free(mlx->mlx);
 	}
 }
+
+#elif __APPLE__
+
+/**
+ * Avoid the usage of mlx_loop_end and mlx_destroy_display
+ * Because we use the OpenGL Lib and these functions aren't present
+ */
+void	cleanup_mlx(t_mlx *mlx)
+{
+	if (!mlx)
+		return ;
+	if (mlx->img)
+		mlx_destroy_image(mlx->mlx, mlx->img);
+	if (mlx->win)
+		mlx_destroy_window(mlx->mlx, mlx->win);
+	if (mlx->mlx)
+		free(mlx->mlx);
+}
+
+#endif
 
 void	initialize_data(t_data *data)
 {

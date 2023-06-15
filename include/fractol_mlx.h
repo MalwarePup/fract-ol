@@ -6,7 +6,7 @@
 /*   By: ladloff <ladloff@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/28 22:36:12 by ladloff           #+#    #+#             */
-/*   Updated: 2023/06/14 13:57:34 by ladloff          ###   ########.fr       */
+/*   Updated: 2023/06/15 13:25:49 by ladloff          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,18 +14,6 @@
 # define FRACTOL_MLX_H
 
 # include "fractol.h"
-
-/**
- * Avoid the usage of mlx_loop_end and mlx_destroy_display
- * Because we use the OpenGL Lib and there is no MLX function for macOS
- */
-# ifdef __APPLE__
-#  define MLX_END_LOOP(mlx) NULL
-#  define MLX_DESTROY_DISPLAY(mlx) NULL
-# elif __linux__
-#  define MLX_END_LOOP(mlx) mlx_loop_end(mlx->mlx)
-#  define MLX_DESTROY_DISPLAY(mlx) mlx_destroy_display(mlx->mlx)
-# endif
 
 /* Default value of each set */
 # define MAX_ITER 50
