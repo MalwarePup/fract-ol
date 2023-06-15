@@ -6,7 +6,7 @@
 /*   By: ladloff <ladloff@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/28 14:58:11 by ladloff           #+#    #+#             */
-/*   Updated: 2023/06/14 13:44:44 by ladloff          ###   ########.fr       */
+/*   Updated: 2023/06/15 12:44:07 by ladloff          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,8 +59,8 @@ void	print_option_menu(void)
 
 t_set	parse_arguments(int argc, char *argv[], t_complex *z)
 {
-	if (is_valid_set(argv[1], MANDELBROT, S_MANDELBROT) == S_MANDELBROT &&
-		argc == 2)
+	if (is_valid_set(argv[1], MANDELBROT, S_MANDELBROT) == S_MANDELBROT
+		&& argc == 2)
 		return (S_MANDELBROT);
 	else if (is_valid_set(argv[1], JULIA, S_JULIA) == S_JULIA)
 	{
