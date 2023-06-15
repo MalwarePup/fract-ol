@@ -6,7 +6,7 @@
 /*   By: ladloff <ladloff@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/28 23:18:25 by ladloff           #+#    #+#             */
-/*   Updated: 2023/05/29 00:58:15 by ladloff          ###   ########.fr       */
+/*   Updated: 2023/06/15 13:17:08 by ladloff          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,6 @@
 # define OFFSET_RATIO 0.05
 
 # define DESTROY_NOTIFY 17
-# define STRUCTURE_NOTIFY_MASK 1L<<17
 
 /* event.h */
 int		close_window_event(t_mlx *mlx);
