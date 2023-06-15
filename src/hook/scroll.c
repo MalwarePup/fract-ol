@@ -6,7 +6,7 @@
 /*   By: ladloff <ladloff@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/28 23:17:41 by ladloff           #+#    #+#             */
-/*   Updated: 2023/05/29 01:09:41 by ladloff          ###   ########.fr       */
+/*   Updated: 2023/06/14 18:31:55 by ladloff          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ void	zoom(t_mlx *mlx, int button, t_complex mouse)
 	{
 		zoom_factor = ZOOM_SCALING_FACTOR;
 		if (mlx->data.max_iter > 40)
-			mlx->data.max_iter++;
+			mlx->data.max_iter--;
 	}
 	mlx->data.x_min = mouse.real + (mlx->data.x_min - mouse.real) * zoom_factor;
 	mlx->data.y_min = mouse.imaginary + (mlx->data.y_min - mouse.imaginary)
