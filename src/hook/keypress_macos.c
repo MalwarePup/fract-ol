@@ -6,17 +6,17 @@
 /*   By: ladloff <ladloff@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/26 13:43:20 by ladloff           #+#    #+#             */
-/*   Updated: 2023/05/29 02:21:21 by ladloff          ###   ########.fr       */
+/*   Updated: 2023/06/15 12:43:08 by ladloff          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdlib.h>
-#include "fractol_hook.h"
-#include "fractol_mlx.h"
-#include "fractol_render.h"
-#include "fractol_color.h"
-
 #ifdef __APPLE__
+
+# include <stdlib.h>
+# include "fractol_hook.h"
+# include "fractol_mlx.h"
+# include "fractol_render.h"
+# include "fractol_color.h"
 
 typedef enum e_apple_key
 {
