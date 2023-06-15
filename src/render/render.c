@@ -6,7 +6,7 @@
 /*   By: ladloff <ladloff@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/26 18:12:01 by ladloff           #+#    #+#             */
-/*   Updated: 2023/05/29 02:11:01 by ladloff          ###   ########.fr       */
+/*   Updated: 2023/06/15 16:49:34 by ladloff          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,18 +15,17 @@
 #include "fractol_sets.h"
 #include "fractol_color.h"
 
-static void	put_pixel(t_mlx *mlx, int x, int y, uint32_t color)
+static void	put_pixel(t_mlx *mlx, int x, int y, t_rgb_color color)
 {
 	char	*pixel_addr;
 
 	pixel_addr = mlx->addr + x * (mlx->bpp / 8) + y * mlx->size_line;
-	*(uint32_t *)pixel_addr = color;
+	*(t_rgb_color *)pixel_addr = color;
 }
 
 void	map_pixel_to_complex(t_complex *c, int x, int y, t_mlx *mlx)
 {
-	c->real = (double)x / (double)WIDTH
-		* (mlx->data.x_max - mlx->data.x_min) + mlx->data.x_min;
+	c->real = (double)x / WIDTH * (mlx->data.x_max - mlx->data.x_min) + mlx->data.x_min;
 	c->imaginary = (double)y / (double)HEIGHT
 		* (mlx->data.y_max - mlx->data.y_min) + mlx->data.y_min;
 }
