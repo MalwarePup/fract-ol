@@ -6,7 +6,7 @@
 #    By: ladloff <ladloff@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/05/26 13:05:47 by ladloff           #+#    #+#              #
-#    Updated: 2023/06/15 22:27:04 by ladloff          ###   ########.fr        #
+#    Updated: 2023/06/16 12:34:29 by ladloff          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -66,7 +66,7 @@ $(BUILD_DIR)/%.o: $(SRC_DIR)/%.c
 -include $(OBJ_FILES:.o=.d)
 
 $(NAME): $(OBJ_FILES)
-	$(CC) $(OBJ_FILES) $(LDFLAGS) $(LDLIBS) -o $(NAME)
+	$(CC) $(CFLAGS) $(OBJ_FILES) $(LDFLAGS) $(LDLIBS) -o $(NAME)
 
 lib:
 	$(MAKE) -C $(LIBFT_DIR)
