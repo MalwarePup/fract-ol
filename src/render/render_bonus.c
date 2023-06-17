@@ -1,19 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   render.c                                           :+:      :+:    :+:   */
+/*   render_bonus.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ladloff <ladloff@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/26 18:12:01 by ladloff           #+#    #+#             */
-/*   Updated: 2023/06/17 15:25:41 by ladloff          ###   ########.fr       */
+/*   Updated: 2023/06/17 15:16:53 by ladloff          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "mlx.h"
-#include "fractol_render.h"
-#include "fractol_sets.h"
-#include "fractol_color.h"
+#include "fractol_render_bonus.h"
+#include "fractol_sets_bonus.h"
+#include "fractol_color_bonus.h"
 
 static void	put_pixel(t_mlx *mlx, int x, int y, t_rgb_color color)
 {
@@ -38,6 +38,8 @@ static void	set_to_calculate(t_mlx *mlx)
 	else if (mlx->data.set == S_JULIA)
 		julia(&mlx->data.z, mlx->data.c, &mlx->data.iter,
 			mlx->data.max_iter);
+	else if (mlx->data.set == S_BURNING_SHIP)
+		burning_ship(mlx->data.c, &mlx->data.iter, mlx->data.max_iter);
 }
 
 void	render_fractal(t_mlx *mlx)

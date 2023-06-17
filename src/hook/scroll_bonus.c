@@ -1,18 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   scroll.c                                           :+:      :+:    :+:   */
+/*   scroll_bonus.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ladloff <ladloff@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/28 23:17:41 by ladloff           #+#    #+#             */
-/*   Updated: 2023/06/17 15:43:36 by ladloff          ###   ########.fr       */
+/*   Updated: 2023/06/17 15:15:48 by ladloff          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdlib.h>
-#include "fractol_hook.h"
-#include "fractol_render.h"
+#include "fractol_hook_bonus.h"
+#include "fractol_render_bonus.h"
 
 void	zoom(t_mlx *mlx, int button, t_complex mouse)
 {

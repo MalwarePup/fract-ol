@@ -1,17 +1,17 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   parser.c                                           :+:      :+:    :+:   */
+/*   parser_bonus.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ladloff <ladloff@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/28 14:58:11 by ladloff           #+#    #+#             */
-/*   Updated: 2023/06/17 15:25:16 by ladloff          ###   ########.fr       */
+/*   Updated: 2023/06/17 15:21:18 by ladloff          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdbool.h>
-#include "fractol_parser.h"
+#include "fractol_parser_bonus.h"
 #include "libft.h"
 #include "ft_printf.h"
 
@@ -54,7 +54,7 @@ static bool	is_valid_double(char *str)
 
 void	print_option_menu(void)
 {
-	ft_printf(HSTR_0 HSTR_1 HSTR_2);
+	ft_printf(HSTR_0 HSTR_1 HSTR_2 HSTR_3);
 }
 
 t_set	parse_arguments(int argc, char *argv[], t_complex *z)
@@ -74,6 +74,9 @@ t_set	parse_arguments(int argc, char *argv[], t_complex *z)
 			return (S_JULIA);
 		}
 	}
+	else if (is_valid_set(argv[1], BURNING_SHIP, S_BURNING_SHIP)
+		== S_BURNING_SHIP && argc == 2)
+		return (S_BURNING_SHIP);
 	print_option_menu();
 	exit(EXIT_SUCCESS);
 }

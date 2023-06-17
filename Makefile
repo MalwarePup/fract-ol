@@ -6,7 +6,7 @@
 #    By: ladloff <ladloff@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/05/26 13:05:47 by ladloff           #+#    #+#              #
-#    Updated: 2023/06/16 12:34:29 by ladloff          ###   ########.fr        #
+#    Updated: 2023/06/17 15:34:08 by ladloff          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -22,19 +22,17 @@ LIBMLX_DIR		:=	./lib/minilibx-linux
 
 SRC_FILES		:=	main.c \
 					color/color.c \
-					error/fractol_error.c \
+					error/error.c \
 					hook/event.c \
 					hook/hook_manager.c \
 					hook/keypress_linux.c \
 					hook/keypress_macos.c \
-					hook/movement.c \
 					hook/scroll.c \
 					mlx/mlx_manager.c \
 					parser/parser.c \
 					render/render.c \
 					sets/julia.c \
 					sets/mandelbrot.c \
-					sets/burning_ship.c
 
 OBJ_FILES			:=	$(patsubst %.c,$(BUILD_DIR)/%.o,$(SRC_FILES))
 
@@ -55,7 +53,27 @@ else
 	$(error Unsupported operating system)
 endif
 
-.PHONY: all clean fclean re lib cleanlib fcleanlib relib
+ifeq ($(BONUS), 1)
+	NAME		:=	fractol_bonus
+	SRC_FILES	:=	main_bonus.c \
+					color/color_bonus.c \
+					error/error_bonus.c \
+					hook/event_bonus.c \
+					hook/hook_manager_bonus.c \
+					hook/keypress_linux_bonus.c \
+					hook/keypress_macos_bonus.c \
+					hook/movement_bonus.c \
+					hook/scroll_bonus.c \
+					mlx/mlx_manager_bonus.c \
+					parser/parser_bonus.c \
+					render/render_bonus.c \
+					sets/julia_bonus.c \
+					sets/mandelbrot_bonus.c \
+					sets/burning_ship_bonus.c
+	OBJ_FILES	:=	$(patsubst %.c,$(BUILD_DIR)/%.o,$(SRC_FILES))
+endif
+
+.PHONY: all clean fclean re bonus rebonus lib cleanlib fcleanlib relib
 
 all: lib $(NAME)
 
@@ -76,9 +94,14 @@ clean:
 	rm -rf $(BUILD_DIR)
 
 fclean: clean
-	$(RM) $(NAME)
+	$(RM) fractol fractol_bonus
 
 re: fclean all
+
+bonus:
+	$(MAKE) BONUS=1 all
+
+rebonus: fclean bonus
 
 cleanlib:
 	$(MAKE) clean -C $(LIBFT_DIR)

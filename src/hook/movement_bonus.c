@@ -1,17 +1,17 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   movement.c                                         :+:      :+:    :+:   */
+/*   movement_bonus.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ladloff <ladloff@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/28 23:21:53 by ladloff           #+#    #+#             */
-/*   Updated: 2023/05/29 01:04:43 by ladloff          ###   ########.fr       */
+/*   Updated: 2023/06/17 15:15:39 by ladloff          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "fractol_hook.h"
-#include "fractol_render.h"
+#include "fractol_hook_bonus.h"
+#include "fractol_render_bonus.h"
 
 void	move_left(t_mlx *mlx)
 {

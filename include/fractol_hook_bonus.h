@@ -1,19 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   fractol_hook.h                                     :+:      :+:    :+:   */
+/*   fractol_hook_bonus.h                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ladloff <ladloff@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/28 23:18:25 by ladloff           #+#    #+#             */
-/*   Updated: 2023/06/17 15:44:54 by ladloff          ###   ########.fr       */
+/*   Updated: 2023/06/17 15:31:28 by ladloff          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FRACTOL_HOOK_H
-# define FRACTOL_HOOK_H
+#ifndef FRACTOL_HOOK_BONUS_H
+# define FRACTOL_HOOK_BONUS_H
 
-# include "fractol.h"
+# include "fractol_bonus.h"
 
 /**
  * For Apple we swap the scroll button due to Apple idea :D
@@ -64,4 +64,4 @@ void	move_down(t_mlx *mlx);
 void	zoom(t_mlx *mlx, int button, t_complex mouse);
 int		hook_mouse_scroll(int button, int x, int y, t_mlx *mlx);
 
-#endif /* FRACTOL_HOOK_H */
+#endif /* FRACTOL_HOOK_BONUS_H */

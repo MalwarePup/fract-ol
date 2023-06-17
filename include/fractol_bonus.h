@@ -1,17 +1,17 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   fractol.h                                          :+:      :+:    :+:   */
+/*   fractol_bonus.h                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ladloff <ladloff@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/26 12:59:39 by ladloff           #+#    #+#             */
-/*   Updated: 2023/06/17 15:25:34 by ladloff          ###   ########.fr       */
+/*   Updated: 2023/06/17 15:11:59 by ladloff          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FRACTOL_H
-# define FRACTOL_H
+#ifndef FRACTOL_BONUS_H
+# define FRACTOL_BONUS_H
 
 # include <stdint.h>
 
@@ -23,6 +23,7 @@ typedef enum s_set
 {
 	S_JULIA,
 	S_MANDELBROT,
+	S_BURNING_SHIP,
 	S_ERROR
 }	t_set;
 
@@ -59,4 +60,4 @@ typedef struct s_mlx
 	t_data	data;
 }	t_mlx;
 
-#endif /* FRACTOL_H */
+#endif /* FRACTOL_BONUS_H */
