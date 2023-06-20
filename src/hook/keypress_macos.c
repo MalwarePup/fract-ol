@@ -6,7 +6,7 @@
 /*   By: ladloff <ladloff@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/26 13:43:20 by ladloff           #+#    #+#             */
-/*   Updated: 2023/06/15 12:43:08 by ladloff          ###   ########.fr       */
+/*   Updated: 2023/06/20 12:15:07 by ladloff          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,8 +31,8 @@ typedef enum e_apple_key
 	APPLE_KEY_LEFT_BRACKET = 33,
 	APPLE_KEY_SPACE = 49,
 	APPLE_KEY_ESCAPE = 53,
-	APPLE_KEY_RIGHT = 123,
-	APPLE_KEY_LEFT = 124,
+	APPLE_KEY_LEFT = 123,
+	APPLE_KEY_RIGHT = 124,
 	APPLE_KEY_DOWN = 125,
 	APPLE_KEY_UP = 126,
 }	t_apple_key;
