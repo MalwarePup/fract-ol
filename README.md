@@ -6,5 +6,5 @@ Computer Graphics Fractals - Version: 2.1
 ## Improvements
 
 - [ ] Render colors without color banding
-- [ ] Better way to generate random numbers
+- [x] Better way to generate random numbers
 - [ ] Multithread in separate branch for fun
