@@ -6,21 +6,21 @@
 #    By: ladloff <ladloff@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/05/26 13:05:47 by ladloff           #+#    #+#              #
-#    Updated: 2023/06/16 12:34:29 by ladloff          ###   ########.fr        #
+#    Updated: 2023/07/26 05:48:17 by ladloff          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-SHELL			:=	/bin/sh
+SHELL			:= /bin/sh
 
-NAME			:=	fractol
+NAME			:= fractol
 
-SRC_DIR			:=	./src
-BUILD_DIR		:=	./build
-INCLUDE_DIR		:=	./include
-LIBFT_DIR		:=	./lib/libft
-LIBMLX_DIR		:=	./lib/minilibx-linux
+SRC_DIR			:= ./src
+BUILD_DIR		:= ./build
+INCLUDE_DIR		:= ./include
+LIBFT_DIR		:= ./lib/libft
+LIBMLX_DIR		:= ./lib/minilibx-linux
 
-SRC_FILES		:=	main.c \
+SRC_FILES		:= main.c \
 					color/color.c \
 					error/fractol_error.c \
 					hook/event.c \
@@ -36,26 +36,27 @@ SRC_FILES		:=	main.c \
 					sets/mandelbrot.c \
 					sets/burning_ship.c
 
-OBJ_FILES			:=	$(patsubst %.c,$(BUILD_DIR)/%.o,$(SRC_FILES))
+OBJ_FILES		:= $(patsubst %.c,$(BUILD_DIR)/%.o,$(SRC_FILES))
 
 ifeq ($(shell uname -s),Linux)
-	CFLAGS		:=	-Wall -Wextra -Werror -MMD -MP -O3
-	CPPFLAGS	:=	-I$(INCLUDE_DIR) -I$(LIBFT_DIR)/include \
+	CFLAGS		:= -Wall -Wextra -Werror -MMD -MP -O3
+	CPPFLAGS	:= -I$(INCLUDE_DIR) -I$(LIBFT_DIR)/include \
 					-I$(LIBMLX_DIR)
-	LDFLAGS		:=	-L$(LIBFT_DIR) -L$(LIBMLX_DIR)
-	LDLIBS		:=	-lft -lmlx_Linux -lXext -lX11 -lm
+	LDFLAGS		:= -L$(LIBFT_DIR) -L$(LIBMLX_DIR)
+	LDLIBS		:= -lft -lmlx_Linux -lm -lXext -lX11
 else ifeq ($(shell uname -s),Darwin)
-	LIBMLX_DIR	:=	./lib/minilibx-opengl
-	CFLAGS		:=	-Wall -Wextra -Werror -MMD -MP -O3
-	CPPFLAGS	:=	-I$(INCLUDE_DIR) -I$(LIBFT_DIR)/include \
+	LIBMLX_DIR	:= ./lib/minilibx-opengl
+	CFLAGS		:= -Wall -Wextra -Werror -MMD -MP -O3
+	CPPFLAGS	:= -I$(INCLUDE_DIR) -I$(LIBFT_DIR)/include \
 					-I$(LIBMLX_DIR)
-	LDFLAGS		:=	-L$(LIBFT_DIR) -L$(LIBMLX_DIR)
-	LDLIBS		:=	-lft -lmlx -framework OpenGL -framework AppKit -lm
+	LDFLAGS		:= -L$(LIBFT_DIR) -L$(LIBMLX_DIR)
+	LDLIBS		:= -lft -lmlx -lm -framework OpenGL -framework AppKit
 else
 	$(error Unsupported operating system)
 endif
 
-.PHONY: all clean fclean re lib cleanlib fcleanlib relib
+.PHONY: all clean fclean re lib cleanlib fcleanlib relib cleanall fcleanall \
+reall
 
 all: lib $(NAME)
 
@@ -86,5 +87,12 @@ cleanlib:
 
 fcleanlib:
 	$(MAKE) fclean -C $(LIBFT_DIR)
+	$(MAKE) clean -C $(LIBMLX_DIR)
 
 relib: fcleanlib lib
+
+cleanall: cleanlib clean
+
+fcleanall: fcleanlib fclean
+
+reall: fcleanall all
