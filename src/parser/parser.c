@@ -6,10 +6,11 @@
 /*   By: ladloff <ladloff@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/28 14:58:11 by ladloff           #+#    #+#             */
-/*   Updated: 2023/06/15 12:44:07 by ladloff          ###   ########.fr       */
+/*   Updated: 2023/07/26 06:20:02 by ladloff          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include <stdlib.h>
 #include <stdbool.h>
 #include "fractol_parser.h"
 #include "libft.h"

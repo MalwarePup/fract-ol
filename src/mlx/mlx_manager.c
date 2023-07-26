@@ -6,10 +6,11 @@
 /*   By: ladloff <ladloff@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/26 13:05:12 by ladloff           #+#    #+#             */
-/*   Updated: 2023/06/15 13:27:27 by ladloff          ###   ########.fr       */
+/*   Updated: 2023/07/26 06:18:21 by ladloff          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include <stdlib.h>
 #include "mlx.h"
 #include "fractol_mlx.h"
 #include "fractol_error.h"

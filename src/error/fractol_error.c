@@ -6,10 +6,11 @@
 /*   By: ladloff <ladloff@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/28 14:32:11 by ladloff           #+#    #+#             */
-/*   Updated: 2023/05/28 14:49:51 by ladloff          ###   ########.fr       */
+/*   Updated: 2023/07/26 06:18:08 by ladloff          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include <stdlib.h>
 #include <unistd.h>
 #include "fractol_error.h"
 #include "libft.h"
