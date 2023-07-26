@@ -6,7 +6,7 @@
 /*   By: ladloff <ladloff@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/26 13:05:12 by ladloff           #+#    #+#             */
-/*   Updated: 2023/07/26 06:18:21 by ladloff          ###   ########.fr       */
+/*   Updated: 2023/07/26 13:09:44 by ladloff          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 #include "mlx.h"
 #include "fractol_mlx.h"
 #include "fractol_error.h"
+#include "fractol_color.h"
 #include "fractol_parser.h"
 #include "libft.h"
 
@@ -89,4 +90,5 @@ void	initialize_data(t_data *data)
 	data->x_max = X_MAX;
 	data->y_min = Y_MIN;
 	data->y_max = Y_MAX;
+	data->color_shift = get_secure_random_uint32() % 256;
 }

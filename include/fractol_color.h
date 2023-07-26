@@ -6,7 +6,7 @@
 /*   By: ladloff <ladloff@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/29 00:23:01 by ladloff           #+#    #+#             */
-/*   Updated: 2023/06/15 16:57:08 by ladloff          ###   ########.fr       */
+/*   Updated: 2023/07/26 13:06:01 by ladloff          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,11 +16,6 @@
 # include <stdint.h>
 # include "fractol.h"
 
-// A (multiplier)
-# define A 1664525
-// C (increment)
-# define C 1013904223
-
 typedef struct s_rgb_color
 {
 	uint8_t	r;
@@ -29,7 +24,7 @@ typedef struct s_rgb_color
 }	t_rgb_color;
 
 /* color.c */
-t_rgb_color	get_color(int iter, uint32_t color_seed);
-uint32_t	pseudo_rand(uint32_t seed);
+t_rgb_color	get_color(int iter, uint32_t color_shift);
+uint32_t	get_secure_random_uint32(void);
 
 #endif /* FRACTOL_COLOR_H */

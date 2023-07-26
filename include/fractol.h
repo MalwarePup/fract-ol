@@ -6,7 +6,7 @@
 /*   By: ladloff <ladloff@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/26 12:59:39 by ladloff           #+#    #+#             */
-/*   Updated: 2023/05/29 02:10:31 by ladloff          ###   ########.fr       */
+/*   Updated: 2023/07/26 13:05:18 by ladloff          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,6 @@ typedef struct s_data
 	double		x_max;
 	double		y_min;
 	double		y_max;
-	uint32_t	color_seed;
 	uint32_t	color_shift;
 }	t_data;
 

@@ -6,10 +6,11 @@
 /*   By: ladloff <ladloff@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/26 18:12:01 by ladloff           #+#    #+#             */
-/*   Updated: 2023/06/15 17:10:24 by ladloff          ###   ########.fr       */
+/*   Updated: 2023/07/26 13:04:36 by ladloff          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include <stdbool.h>
 #include "mlx.h"
 #include "fractol_render.h"
 #include "fractol_sets.h"
@@ -60,7 +61,7 @@ void	render_fractal(t_mlx *mlx)
 			mlx->data.iter = 0;
 			set_to_calculate(mlx);
 			put_pixel(mlx, x, y, get_color(mlx->data.iter,
-					mlx->data.color_seed));
+					mlx->data.color_shift));
 			y++;
 		}
 		x++;
