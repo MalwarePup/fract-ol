@@ -6,13 +6,14 @@
 /*   By: ladloff <ladloff@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/26 19:30:24 by ladloff           #+#    #+#             */
-/*   Updated: 2023/05/28 22:54:57 by ladloff          ###   ########.fr       */
+/*   Updated: 2023/07/26 13:56:50 by ladloff          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include <math.h>
 #include "fractol_sets.h"
 
-void	julia(t_complex *z, t_complex c, int *iter, int max_iter)
+void	julia(t_complex *z, t_complex c, double *iter, int max_iter)
 {
 	double	temp_real;
 	double	real_squared;
@@ -28,5 +29,10 @@ void	julia(t_complex *z, t_complex c, int *iter, int max_iter)
 		real_squared = z->real * z->real;
 		imaginary_squared = z->imaginary * z->imaginary;
 		(*iter)++;
+	}
+	if (*iter < max_iter)
+	{
+		*iter = *iter - log(log(sqrt(real_squared + imaginary_squared)))
+			/ log(2.0);
 	}
 }

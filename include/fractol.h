@@ -6,7 +6,7 @@
 /*   By: ladloff <ladloff@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/26 12:59:39 by ladloff           #+#    #+#             */
-/*   Updated: 2023/07/26 13:05:18 by ladloff          ###   ########.fr       */
+/*   Updated: 2023/07/26 13:34:03 by ladloff          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ typedef struct s_data
 	t_complex	c;
 	t_complex	z;
 	int			max_iter;
-	int			iter;
+	double		iter;
 	t_set		set;
 	double		x_min;
 	double		x_max;

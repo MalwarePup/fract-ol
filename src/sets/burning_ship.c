@@ -6,14 +6,14 @@
 /*   By: ladloff <ladloff@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/28 21:10:50 by ladloff           #+#    #+#             */
-/*   Updated: 2023/05/28 22:54:47 by ladloff          ###   ########.fr       */
+/*   Updated: 2023/07/26 13:56:45 by ladloff          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <math.h>
 #include "fractol_sets.h"
 
-void	burning_ship(t_complex c, int *iter, int max_iter)
+void	burning_ship(t_complex c, double *iter, int max_iter)
 {
 	t_complex	z;
 	double		temp;
@@ -32,5 +32,10 @@ void	burning_ship(t_complex c, int *iter, int max_iter)
 		real_squared = z.real * z.real;
 		imaginary_squared = z.imaginary * z.imaginary;
 		(*iter)++;
+	}
+	if (*iter < max_iter)
+	{
+		*iter = *iter - log(log(sqrt(real_squared + imaginary_squared)))
+			/ log(2.0);
 	}
 }

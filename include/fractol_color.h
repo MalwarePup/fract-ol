@@ -6,7 +6,7 @@
 /*   By: ladloff <ladloff@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/29 00:23:01 by ladloff           #+#    #+#             */
-/*   Updated: 2023/07/26 13:06:01 by ladloff          ###   ########.fr       */
+/*   Updated: 2023/07/26 13:30:34 by ladloff          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ typedef struct s_rgb_color
 }	t_rgb_color;
 
 /* color.c */
-t_rgb_color	get_color(int iter, uint32_t color_shift);
+t_rgb_color	get_color(double iter, uint32_t color_shift);
 uint32_t	get_secure_random_uint32(void);
 
 #endif /* FRACTOL_COLOR_H */

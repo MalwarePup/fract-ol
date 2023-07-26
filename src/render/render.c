@@ -6,11 +6,10 @@
 /*   By: ladloff <ladloff@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/26 18:12:01 by ladloff           #+#    #+#             */
-/*   Updated: 2023/07/26 13:04:36 by ladloff          ###   ########.fr       */
+/*   Updated: 2023/07/26 14:06:08 by ladloff          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdbool.h>
 #include "mlx.h"
 #include "fractol_render.h"
 #include "fractol_sets.h"
@@ -45,8 +44,8 @@ static void	set_to_calculate(t_mlx *mlx)
 
 void	render_fractal(t_mlx *mlx)
 {
-	int		x;
-	int		y;
+	int	x;
+	int	y;
 
 	x = 0;
 	while (x < WIDTH)

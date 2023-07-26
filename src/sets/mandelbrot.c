@@ -6,13 +6,14 @@
 /*   By: ladloff <ladloff@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/26 13:55:45 by ladloff           #+#    #+#             */
-/*   Updated: 2023/05/28 22:55:04 by ladloff          ###   ########.fr       */
+/*   Updated: 2023/07/26 13:56:32 by ladloff          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include <math.h>
 #include "fractol_sets.h"
 
-void	mandelbrot(t_complex c, int *iter, int max_iter)
+void	mandelbrot(t_complex c, double *iter, int max_iter)
 {
 	t_complex	z;
 	double		real_squared;
@@ -29,5 +30,10 @@ void	mandelbrot(t_complex c, int *iter, int max_iter)
 		real_squared = z.real * z.real;
 		imaginary_squared = z.imaginary * z.imaginary;
 		(*iter)++;
+	}
+	if (*iter < max_iter)
+	{
+		*iter = *iter - log(log(sqrt(real_squared + imaginary_squared)))
+			/ log(2.0);
 	}
 }
