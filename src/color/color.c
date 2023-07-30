@@ -6,7 +6,7 @@
 /*   By: ladloff <ladloff@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/29 00:22:48 by ladloff           #+#    #+#             */
-/*   Updated: 2023/07/30 10:51:45 by ladloff          ###   ########.fr       */
+/*   Updated: 2023/07/30 10:55:07 by ladloff          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,7 @@ uint32_t	get_secure_random_uint32(t_mlx *mlx)
 	if (random_data == -1)
 	{
 		cleanup_mlx(mlx);
-		perror("Failed to open /dev/urandom");
+		perror("open (get_secure_random_uint32)");
 		exit(FRACTOL_ERR_OPEN);
 	}
 	bytes_read = read(random_data, &random_value, sizeof(uint32_t));
@@ -59,7 +59,7 @@ uint32_t	get_secure_random_uint32(t_mlx *mlx)
 	if (bytes_read != sizeof(uint32_t))
 	{
 		cleanup_mlx(mlx);
-		perror("Error reading random data");
+		perror("read (get_secure_random_uint32)");
 		exit(FRACTOL_ERR_READ);
 	}
 	return (random_value);
