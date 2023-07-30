@@ -6,7 +6,7 @@
 /*   By: ladloff <ladloff@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/26 13:43:20 by ladloff           #+#    #+#             */
-/*   Updated: 2023/07/26 13:04:57 by ladloff          ###   ########.fr       */
+/*   Updated: 2023/07/30 10:46:02 by ladloff          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,12 +85,12 @@ int	hook_keypress(int key, t_mlx *mlx)
 	}
 	else if (key == APPLE_KEY_R)
 	{
-		initialize_data(&mlx->data);
+		initialize_data(&mlx->data, mlx);
 		render_fractal(mlx);
 	}
 	else if (key == APPLE_KEY_SPACE)
 	{
-		mlx->data.color_shift = get_secure_random_uint32() % 256;
+		mlx->data.color_shift = get_secure_random_uint32(mlx) % 256;
 		render_fractal(mlx);
 	}
 	hook_other_options(key, mlx);

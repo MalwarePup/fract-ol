@@ -6,7 +6,7 @@
 /*   By: ladloff <ladloff@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/26 13:43:20 by ladloff           #+#    #+#             */
-/*   Updated: 2023/07/26 13:04:58 by ladloff          ###   ########.fr       */
+/*   Updated: 2023/07/30 10:46:20 by ladloff          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,12 +66,12 @@ int	hook_keypress(int key, t_mlx *mlx)
 	}
 	else if (key == XK_R || key == XK_r)
 	{
-		initialize_data(&mlx->data);
+		initialize_data(&mlx->data, mlx);
 		render_fractal(mlx);
 	}
 	else if (key == XK_space)
 	{
-		mlx->data.color_shift = get_secure_random_uint32() % 256;
+		mlx->data.color_shift = get_secure_random_uint32(mlx) % 256;
 		render_fractal(mlx);
 	}
 	hook_other_options(key, mlx);

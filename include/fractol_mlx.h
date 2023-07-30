@@ -6,7 +6,7 @@
 /*   By: ladloff <ladloff@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/28 22:36:12 by ladloff           #+#    #+#             */
-/*   Updated: 2023/06/15 13:25:49 by ladloff          ###   ########.fr       */
+/*   Updated: 2023/07/30 10:45:21 by ladloff          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,6 @@
 /* ressources_manager */
 t_mlx	setup_mlx(int argc, char *argv[]);
 void	cleanup_mlx(t_mlx *mlx);
-void	initialize_data(t_data *data);
+void	initialize_data(t_data *data, t_mlx *mlx);
 
 #endif /* FRACTOL_MLX_H */

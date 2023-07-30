@@ -6,7 +6,7 @@
 /*   By: ladloff <ladloff@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/28 14:32:56 by ladloff           #+#    #+#             */
-/*   Updated: 2023/05/28 23:06:49 by ladloff          ###   ########.fr       */
+/*   Updated: 2023/07/30 10:50:44 by ladloff          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,8 @@ typedef enum t_fractol_errno
 	FRACTOL_ERR_MLX_WIN,
 	FRACTOL_ERR_MLX_IMG,
 	FRACTOL_ERR_MLX_DATA_ADDR,
+	FRACTOL_ERR_OPEN,
+	FRACTOL_ERR_READ
 }	t_fractol_errno;
 
 /* fractol_error.c */

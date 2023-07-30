@@ -6,7 +6,7 @@
 /*   By: ladloff <ladloff@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/26 13:05:12 by ladloff           #+#    #+#             */
-/*   Updated: 2023/07/26 13:09:44 by ladloff          ###   ########.fr       */
+/*   Updated: 2023/07/30 10:45:06 by ladloff          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,7 +78,7 @@ void	cleanup_mlx(t_mlx *mlx)
 
 #endif
 
-void	initialize_data(t_data *data)
+void	initialize_data(t_data *data, t_mlx *mlx)
 {
 	data->max_iter = MAX_ITER;
 	if (!data->c.real && !data->c.imaginary && data->set == S_JULIA)
@@ -90,5 +90,5 @@ void	initialize_data(t_data *data)
 	data->x_max = X_MAX;
 	data->y_min = Y_MIN;
 	data->y_max = Y_MAX;
-	data->color_shift = get_secure_random_uint32() % 256;
+	data->color_shift = get_secure_random_uint32(mlx) % 256;
 }
